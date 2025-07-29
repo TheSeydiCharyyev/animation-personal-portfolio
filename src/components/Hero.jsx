@@ -33,7 +33,7 @@ export const Hero = () => {
           animate="animate"
         >
           <motion.div className="hero-badge">
-            <span> 👋 Hello, I'm </span>
+            <span> 👋 Hello, I'm Seydi Charyyev</span>
           </motion.div>
           <motion.h1
             className="glitch"
