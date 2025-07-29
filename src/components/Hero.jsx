@@ -33,18 +33,18 @@ export const Hero = () => {
           animate="animate"
         >
           <motion.div className="hero-badge">
-            <span> 👋 Hello, I'm Seydi Charyyev</span>
+            <span> 👋 Hello, I'm</span>
           </motion.div>
           <motion.h1
             className="glitch"
             variants={fadeInUp}
             whileHover={{ scale: 1.02 }}
           >
-            PedroTech
+            Seydi Charyyev
           </motion.h1>
           <motion.h2 className="hero-subtitle" variants={fadeInUp}>
             {" "}
-            Creative Developer & Designer
+            Fullstack Engineer and mobile developer (sometimes, that's hobby)
           </motion.h2>
           <motion.p className="hero-description" variants={fadeInUp}>
             I craft beautiful digital experiences that combine stunning design
