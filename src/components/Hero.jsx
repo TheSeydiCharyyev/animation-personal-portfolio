@@ -47,9 +47,7 @@ export const Hero = () => {
             Fullstack Engineer and mobile developer (sometimes, that's hobby)
           </motion.h2>
           <motion.p className="hero-description" variants={fadeInUp}>
-            I craft beautiful digital experiences that combine stunning design
-            with powerful functionality. Specializing in modern web applications
-            and interactive user interfaces.
+            I build clean, responsive web applications and mobile apps, combining modern design with efficient backend systems. My focus is on creating fast, user-friendly digital experiences using the latest technologies like React, Node.js, React Native, and Flutter.
           </motion.p>
 
           <motion.div className="cta-buttons" variants={staggerContainer}>
