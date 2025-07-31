@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 
+// Анимации
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -14,6 +15,22 @@ const staggerContainer = {
   },
 };
 
+const sentence = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const letter = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export const Navbar = () => {
   return (
     <motion.nav
@@ -22,14 +39,21 @@ export const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
+      {/* Анимированный заголовок */}
       <motion.div
-        className="logo"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        className="logo text-white text-lg font-mono"
+        variants={sentence}
+        initial="hidden"
+        animate="visible"
       >
-        Welcome to my simple portfolio 
+        {"Welcome to my simple portfolio".split("").map((char, index) => (
+          <motion.span key={index} variants={letter}>
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
+        ))}
       </motion.div>
 
+      {/* Ссылки меню */}
       <motion.ul
         className="nav-links"
         variants={staggerContainer}

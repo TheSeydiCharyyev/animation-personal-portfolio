@@ -101,12 +101,12 @@ export const Hero = () => {
               style={vscDarkPlus}
             >
               {`const aboutMe: DeveloperProfile = {
-  codename: "PedroTech",
+  codename: "Seydi",
   origin: "🌍 Somewhere between a coffee shop and a terminal",
-  role: "Fullstack Web Sorcerer",
+  role: "Fullstack Engineer and mobile developer",
   stack: {
-    languages: ["JavaScript", "TypeScript", "SQL"],
-    frameworks: ["React", "Next.js", "TailwindCSS", "Supabase"],
+    languages: ["JavaScript", "Dart", "Delphi"],
+    frameworks: ["React", "React Native", "NodeJS", "Flutter"],
   },
   traits: [
     "pixel-perfectionist",
