@@ -44,7 +44,7 @@ export const Hero = () => {
           </motion.h1>
           <motion.h2 className="hero-subtitle" variants={fadeInUp}>
             {" "}
-            Fullstack Engineer and mobile developer (sometimes, that's hobby)
+            Fullstack Engineer and mobile developer
           </motion.h2>
           <motion.p className="hero-description" variants={fadeInUp}>
             I build clean, responsive web applications and mobile apps, combining modern design with efficient backend systems. My focus is on creating fast, user-friendly digital experiences using the latest technologies like React, Node.js, React Native, and Flutter.
