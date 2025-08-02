@@ -1,87 +1,69 @@
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from 'react';
+import './Navbar.css';
 
-// Анимации
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
-};
+const Navbar = () => {
+  const navbarRef = useRef(null);
 
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+  useEffect(() => {
+    const tabsNewAnim = navbarRef.current;
+    const activeItemNewAnim = tabsNewAnim.querySelector('.active');
+    const horiSelector = tabsNewAnim.querySelector('.hori-selector');
+    const activeWidthNewAnimWidth = activeItemNewAnim.innerWidth;
+    const itemPosNewAnimLeft = activeItemNewAnim.offsetLeft;
 
-const sentence = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.05,
-    },
-  },
-};
+    horiSelector.style.left = `${itemPosNewAnimLeft}px`;
+    horiSelector.style.width = `${activeWidthNewAnimWidth}px`;
 
-const letter = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+    const handleClick = (e) => {
+      tabsNewAnim.querySelectorAll('li').forEach((li) => li.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      const activeWidth = e.currentTarget.innerWidth;
+      const itemPosLeft = e.currentTarget.offsetLeft;
+      horiSelector.style.left = `${itemPosLeft}px`;
+      horiSelector.style.width = `${activeWidth}px`;
+    };
 
-export const Navbar = () => {
+    tabsNewAnim.querySelectorAll('li').forEach((li) => {
+      li.addEventListener('click', handleClick);
+    });
+
+    return () => {
+      tabsNewAnim.querySelectorAll('li').forEach((li) => {
+        li.removeEventListener('click', handleClick);
+      });
+    };
+  }, []);
+
   return (
-    <motion.nav
-      className="navbar"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      {/* Анимированный заголовок */}
-      <motion.div
-        className="logo text-white text-lg font-mono"
-        variants={sentence}
-        initial="hidden"
-        animate="visible"
-      >
-        {"Welcome to my simple portfolio".split("").map((char, index) => (
-          <motion.span key={index} variants={letter}>
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
-      </motion.div>
-
-      {/* Ссылки меню */}
-      <motion.ul
-        className="nav-links"
-        variants={staggerContainer}
-        initial="initial"
-        animate="animate"
-      >
-        <motion.li
-          variants={fadeInUp}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="#home"> Home</a>
-        </motion.li>
-        <motion.li
-          variants={fadeInUp}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="#projects"> Projects</a>
-        </motion.li>
-        <motion.li
-          variants={fadeInUp}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="#contact"> Contact</a>
-        </motion.li>
-      </motion.ul>
-    </motion.nav>
+    <div id="navbar-animmenu" ref={navbarRef}>
+      <ul className="show-dropdown main-navbar">
+        <div className="hori-selector">
+          <div className="left"></div>
+          <div className="right"></div>
+        </div>
+        <li className="active">
+          <a href="#home">
+            <i className="fas fa-home"></i>Home
+          </a>
+        </li>
+        <li>
+          <a href="#about">
+            <i className="fas fa-user"></i>About
+          </a>
+        </li>
+        <li>
+          <a href="#projects">
+            <i className="fas fa-briefcase"></i>Projects
+          </a>
+        </li>
+        <li>
+          <a href="#contact">
+            <i className="fas fa-envelope"></i>Contact
+          </a>
+        </li>
+      </ul>
+    </div>
   );
 };
+
+export default Navbar;
